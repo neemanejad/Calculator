@@ -81,73 +81,142 @@ namespace Calculator
 
         private void num0Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "0";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "0";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
 
         }
 
         private void num1Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "1";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "1";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void num2Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "2";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "2";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            } catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void num3Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "3";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "3";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void num4Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "4";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "4";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void num5Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "5";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "5";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void num6Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "6";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "6";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void num7Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "7";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "7";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void num8Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "8";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "8";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void num9Click(object sender, RoutedEventArgs e)
         {
-            string newNumStr = resultBox.Text + "9";
-            long newNum = long.Parse(newNumStr);
-            resultBox.Text = newNum.ToString();
+            try
+            {
+                string newNumStr = resultBox.Text + "9";
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
         }
 
         private void clearEntryClick(object sender, RoutedEventArgs e)
