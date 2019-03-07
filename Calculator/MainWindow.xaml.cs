@@ -29,6 +29,11 @@ namespace Calculator
         {
             private int firstNumber, secondNumber;
 
+            Calc()
+            {
+                firstNumber = 0;
+                secondNumber = 0;
+            }
 
             Calc(int firstNumber, int secondNumber)
             {
@@ -145,6 +150,11 @@ namespace Calculator
             string newNumStr = resultBox.Text + "9";
             long newNum = long.Parse(newNumStr);
             resultBox.Text = newNum.ToString();
+        }
+
+        private void clearEntryClick(object sender, RoutedEventArgs e)
+        {
+            resultBox.Text = "0";
         }
     }
 }

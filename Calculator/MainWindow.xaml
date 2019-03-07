@@ -25,7 +25,7 @@
         <Button x:Name="plusButton" Content="+" HorizontalAlignment="Left" Margin="202,63,0,0" VerticalAlignment="Top" Width="59" Height="48" FontSize="24" FontWeight="Bold"/>
         <Button x:Name="multiplyButton" Content="*" HorizontalAlignment="Left" Margin="202,116,0,0" VerticalAlignment="Top" Width="59" Height="48" FontSize="24" FontWeight="Bold"/>
         <Button x:Name="divideButton" Content="/" HorizontalAlignment="Left" Margin="266,116,0,0" VerticalAlignment="Top" Width="59" Height="48" FontSize="24" FontWeight="Bold"/>
-        <Button x:Name="clearEntryButton" Content="C" HorizontalAlignment="Left" Margin="202,169,0,0" VerticalAlignment="Top" Width="123" Height="101" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="clearEntryButton" Content="C" HorizontalAlignment="Left" Margin="202,169,0,0" VerticalAlignment="Top" Width="123" Height="101" FontSize="24" FontWeight="Bold" Click="clearEntryClick"/>
 
     </Grid>
 </Window>
