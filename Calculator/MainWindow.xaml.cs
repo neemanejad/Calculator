@@ -29,13 +29,13 @@ namespace Calculator
         {
             private int firstNumber, secondNumber;
 
-            Calc()
+            public Calc()
             {
                 firstNumber = 0;
                 secondNumber = 0;
             }
 
-            Calc(int firstNumber, int secondNumber)
+            public Calc(int firstNumber, int secondNumber)
             {
                 this.firstNumber = firstNumber;
                 this.secondNumber = secondNumber;
@@ -76,8 +76,6 @@ namespace Calculator
                 firstNumber = 0;
                 secondNumber = 0;
             }
-
-
 
         }
 
@@ -155,6 +153,11 @@ namespace Calculator
         private void clearEntryClick(object sender, RoutedEventArgs e)
         {
             resultBox.Text = "0";
+        }
+
+        private void plucClick(object sender, RoutedEventArgs e)
+        {
+             
         }
     }
 }
