@@ -25,11 +25,6 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         class Calc
         {
             private int firstNumber, secondNumber;
@@ -79,6 +74,77 @@ namespace Calculator
 
 
 
+        }
+
+        private void num0Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "0";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+
+        }
+
+        private void num1Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "1";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+        }
+
+        private void num2Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "2";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+        }
+
+        private void num3Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "3";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+        }
+
+        private void num4Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "4";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+        }
+
+        private void num5Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "5";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+        }
+
+        private void num6Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "6";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+        }
+
+        private void num7Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "7";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+        }
+
+        private void num8Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "8";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
+        }
+
+        private void num9Click(object sender, RoutedEventArgs e)
+        {
+            string newNumStr = resultBox.Text + "9";
+            long newNum = long.Parse(newNumStr);
+            resultBox.Text = newNum.ToString();
         }
     }
 }
