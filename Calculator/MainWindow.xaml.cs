@@ -31,14 +31,14 @@ namespace Calculator
         class Calc
         {
             private long firstNumber, secondNumber;
-            private bool isNumSaved;
+            private bool isThereAnswer;
             private bool isPlus, isMinus, isMult, isDiv, isExp;
 
             public Calc()
             {
                 firstNumber = 0;
                 secondNumber = 0;
-                isNumSaved = false;
+                isThereAnswer = false;
                 isPlus = false;
                 isMinus = false;
                 isMult = false;
@@ -50,7 +50,7 @@ namespace Calculator
             {
                 this.firstNumber = firstNumber;
                 this.secondNumber = secondNumber;
-                isNumSaved = false;
+                isThereAnswer = false;
                 isPlus = false;
                 isMinus = false;
                 isMult = false;
@@ -78,14 +78,19 @@ namespace Calculator
                 return false;
             }
 
-            public void setFirstNumberSaved()
+            public void setIsThereAnswer()
             {
-                isNumSaved = true;
+                isThereAnswer = true;
             }
 
-            public void setFirstNumberUnsaved()
+            public void unsetIsThereAnswer()
             {
-                isNumSaved = false;
+                isThereAnswer = false;
+            }
+
+            public bool getIsThereAnswer()
+            {
+                return isThereAnswer;
             }
           
             public void setPlus()
@@ -98,6 +103,10 @@ namespace Calculator
                 isPlus = false;
             }
 
+            public bool getIsPlus()
+            {
+                return isPlus;
+            }
 
             public void setMinus()
             {
@@ -107,6 +116,11 @@ namespace Calculator
             public void unsetMinus()
             {
                 isMinus = false;
+            }
+
+            public bool getIsMinus()
+            {
+                return isMinus;
             }
 
             public void setMult()
@@ -119,6 +133,11 @@ namespace Calculator
                 isMult = false;
             }
 
+            public bool getIsMult()
+            {
+                return isMult;
+            }
+
             public void setDiv()
             {
                 isDiv = true;
@@ -127,6 +146,11 @@ namespace Calculator
             public void unsetDiv()
             {
                 isDiv = false;
+            }
+
+            public bool getIsDiv()
+            {
+                return isDiv;
             }
 
             public void setExp()
@@ -139,34 +163,39 @@ namespace Calculator
                 isExp = false;
             }
 
-            public static long Add(long firstNumber, long secondNumber)
+            public bool getIsExp()
+            {
+                return isExp;
+            }
+
+            public long Add()
             {
                 return firstNumber + secondNumber;
             }
 
-            public static long Subtract(long firstNumber, long secondNumber)
+            public long Subtract()
             {
                 return firstNumber - secondNumber;
             }
 
-            public static long Multiply(long firstNumber, long secondNumber)
+            public long Multiply()
             {
                 return firstNumber * secondNumber;
             }
 
-            public static long Divide(long firstNumber, long secondNumber)
+            public long Divide()
             {
                 return firstNumber / secondNumber;
             }
 
-            public static long Exponentiate(long number, long exponent)
+            public long Exponentiate()
             {
-                for (int i = 1; i < exponent; i++)
+                for (int i = 1; i < secondNumber; i++)
                 {
-                    number *= number;
+                    firstNumber *= firstNumber;
                 }
 
-                return number;
+                return firstNumber;
             }
 
             public void Clear()
@@ -179,6 +208,13 @@ namespace Calculator
 
         private void num0Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "0";
@@ -194,6 +230,13 @@ namespace Calculator
 
         private void num1Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "1";
@@ -208,6 +251,13 @@ namespace Calculator
 
         private void num2Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "2";
@@ -221,6 +271,13 @@ namespace Calculator
 
         private void num3Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "3";
@@ -235,6 +292,13 @@ namespace Calculator
 
         private void num4Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "4";
@@ -249,6 +313,13 @@ namespace Calculator
 
         private void num5Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "5";
@@ -263,6 +334,13 @@ namespace Calculator
 
         private void num6Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "6";
@@ -277,6 +355,13 @@ namespace Calculator
 
         private void num7Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "7";
@@ -291,6 +376,13 @@ namespace Calculator
 
         private void num8Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "8";
@@ -305,6 +397,13 @@ namespace Calculator
 
         private void num9Click(object sender, RoutedEventArgs e)
         {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+
             try
             {
                 string newNumStr = resultBox.Text + "9";
@@ -320,15 +419,60 @@ namespace Calculator
         private void clearEntryClick(object sender, RoutedEventArgs e)
         {
             resultBox.Text = "0";
-            calculator.setFirstNumberUnsaved();
         }
 
         private void plusClick(object sender, RoutedEventArgs e)
         {
             calculator.SetFirstNumber(long.Parse(resultBox.Text));
             calculator.setPlus();
-            calculator.setFirstNumberSaved();
+            resultBox.Text = "0";
             
+        }
+
+        private void equalClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (calculator.Check(calculator.getIsPlus()))
+                {
+                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    long finalNum = calculator.Add();
+                    calculator.setIsThereAnswer();
+                    resultBox.Text = finalNum.ToString();
+                }
+                else if (calculator.Check(calculator.getIsMinus()))
+                {
+                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    long finalNum = calculator.Subtract();
+                    calculator.setIsThereAnswer();
+                    resultBox.Text = finalNum.ToString();
+                }
+                else if (calculator.Check(calculator.getIsMult()))
+                {
+                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    long finalNum = calculator.Multiply();
+                    calculator.setIsThereAnswer();
+                    resultBox.Text = finalNum.ToString();
+                }
+                else if (calculator.Check(calculator.getIsDiv()))
+                {
+                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    long finalNum = calculator.Divide();
+                    calculator.setIsThereAnswer();
+                    resultBox.Text = finalNum.ToString();
+                }
+                else if (calculator.Check(calculator.getIsExp()))
+                {
+                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    long finalNum = calculator.Exponentiate();
+                    calculator.setIsThereAnswer();
+                    resultBox.Text = finalNum.ToString();
+                }
+            } catch (DivideByZeroException)
+            {
+                resultBox.Text = "Cannot Divide by Zero";
+                calculator.setIsThereAnswer();
+            }
         }
     }
 }
