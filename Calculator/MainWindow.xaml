@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="Neema's Calculator" Height="322.311" Width="319.201" KeyDown="keyboardNumPress" MinWidth="418" MinHeight="320">
-    <Grid>
+        Title="Neema's Calculator" Height="322.311" Width="426.201" KeyDown="keyboardNumPress" MinWidth="426.201" MinHeight="322.311">
+    <Grid Margin="10,0,2,0">
 
         <TextBlock x:Name="resultBox" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="51" Text="0" FontSize="36" Background="#FFC9C9C9" HorizontalAlignment="Left" Width="379"/>
         <Button x:Name="num0" Content="0" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="187" Height="48" Click="num0Click"/>
@@ -19,7 +19,7 @@
         <Button x:Name="num7" Content="7" HorizontalAlignment="Left" Margin="10,169,0,0" VerticalAlignment="Top" Width="59" Height="48" Click="num7Click"/>
         <Button x:Name="num8" Content="8" HorizontalAlignment="Left" Margin="74,169,0,0" VerticalAlignment="Top" Width="59" Height="48" Click="num8Click"/>
         <Button x:Name="num9" Content="9" HorizontalAlignment="Left" Margin="138,169,0,0" VerticalAlignment="Top" Width="59" Height="48" Click="num9Click"/>
-        <Button x:Name="equalButton" Content="=" HorizontalAlignment="Left" Margin="330,116,0,0" VerticalAlignment="Top" Width="59" Height="154" Click="equalClick" FontWeight="Bold" FontSize="22"/>
+        <Button x:Name="equalButton" Content="=" HorizontalAlignment="Left" Margin="330,116,0,0" VerticalAlignment="Top" Width="59" Height="154" FontWeight="Bold" Click="equalClick"/>
         <Button x:Name="exponentButton" Content="^" HorizontalAlignment="Left" Margin="330,63,0,0" VerticalAlignment="Top" Width="59" Height="48" FontSize="24" FontWeight="Bold" Click="exponentClick"/>
         <Button x:Name="minusButton" Content="-" HorizontalAlignment="Left" Margin="266,63,0,0" VerticalAlignment="Top" Width="59" Height="48" FontSize="24" FontWeight="Bold" Click="minusClick"/>
         <Button x:Name="plusButton" Content="+" HorizontalAlignment="Left" Margin="202,63,0,0" VerticalAlignment="Top" Width="59" Height="48" FontSize="24" FontWeight="Bold" Click="plusClick"/>
