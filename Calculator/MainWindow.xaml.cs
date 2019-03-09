@@ -99,8 +99,8 @@ namespace Calculator
             try
             {
                 CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.SetFirstNumber(long.Parse(resultBox.Text));
-                calculator.setPlus();
+                calculator.firstNumber = long.Parse(resultBox.Text);
+                calculator.isPlus = true;
                 resultBox.Text = "0";
             } catch (FormatException)
             {
@@ -113,8 +113,8 @@ namespace Calculator
             try
             {
                 CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.SetFirstNumber(long.Parse(resultBox.Text));
-                calculator.setMinus();
+                calculator.firstNumber = long.Parse(resultBox.Text);
+                calculator.isMinus = true;
                 resultBox.Text = "0";
             } catch (FormatException)
             {
@@ -127,8 +127,8 @@ namespace Calculator
             try
             {
                 CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.SetFirstNumber(long.Parse(resultBox.Text));
-                calculator.setMult();
+                calculator.firstNumber = long.Parse(resultBox.Text);
+                calculator.isMult = true;
                 resultBox.Text = "0";
             } catch (FormatException)
             {
@@ -142,8 +142,8 @@ namespace Calculator
             try
             {
                 CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.SetFirstNumber(long.Parse(resultBox.Text));
-                calculator.setDiv();
+                calculator.firstNumber = long.Parse(resultBox.Text);
+                calculator.isDiv = true;
                 resultBox.Text = "0";
             }
             catch (FormatException)
@@ -158,8 +158,8 @@ namespace Calculator
             try
             {
                 CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.SetFirstNumber(long.Parse(resultBox.Text));
-                calculator.setExp();
+                calculator.firstNumber = long.Parse(resultBox.Text);
+                calculator.isExp = true;
                 resultBox.Text = "0";
             }
             catch (FormatException)
@@ -173,72 +173,73 @@ namespace Calculator
         {
             try
             {
-                if (calculator.Check(calculator.getIsPlus()))
+                if (calculator.Check(calculator.isPlus))
                 {
-                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Add();
                     showAndSetAnswer(finalNum);
                 }
-                else if (calculator.Check(calculator.getIsMinus()))
+                else if (calculator.Check(calculator.isMinus))
                 {
-                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Subtract();
                     showAndSetAnswer(finalNum);
                 }
-                else if (calculator.Check(calculator.getIsMult()))
+                else if (calculator.Check(calculator.isMult))
                 {
-                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Multiply();
                     showAndSetAnswer(finalNum);
                 }
-                else if (calculator.Check(calculator.getIsDiv()))
+                else if (calculator.Check(calculator.isDiv))
                 {
-                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Divide();
                     showAndSetAnswer(finalNum);
                 }
-                else if (calculator.Check(calculator.getIsExp()))
+                else if (calculator.Check(calculator.isExp))
                 {
-                    calculator.SetSecondNumber(long.Parse(resultBox.Text));
+                    calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Exponentiate();
                     showAndSetAnswer(finalNum);
                 }
             } catch (DivideByZeroException)
             {
                 resultBox.Text = "Cannot Divide by Zero";
-                calculator.setIsThereAnswer();
+                calculator.isThereAnswer = true;
             } catch (OverflowException)
             {
                 resultBox.Text = "Overflow";
-                calculator.setIsThereAnswer();
+                calculator.isThereAnswer = true;
             } catch (FormatException)
             {
                 resultBox.Text = resultBox.Text;
-                calculator.setIsThereAnswer();
+                calculator.isThereAnswer = true;
             }
         }
 
         public void CheckOperators()
         {
-            if (calculator.Check(calculator.getIsPlus()))
+            //Unset operator if it's active
+            if (calculator.Check(calculator.isPlus))
             {
-                calculator.unsetPlus();
+                calculator.isPlus = false;
             }
-            else if (calculator.Check(calculator.getIsMinus()))
+            else if (calculator.Check(calculator.isMinus))
             {
-                calculator.unsetMinus();
+                calculator.isMinus = false;
             }
-            else if (calculator.Check(calculator.getIsMult()))
+            else if (calculator.Check(calculator.isMult))
             {
-                calculator.unsetMult();
+                calculator.isMult = false;
             }
-            else if (calculator.Check(calculator.getIsDiv()))
+            else if (calculator.Check(calculator.isDiv))
             {
-                calculator.unsetDiv();
+                calculator.isDiv = false;
             }
-            else if (calculator.Check(calculator.getIsExp()))
+            else if (calculator.Check(calculator.isExp))
             {
-                calculator.unsetExp();
+                calculator.isExp = false;
             }
         }
 
@@ -324,18 +325,18 @@ namespace Calculator
         public void checkIfAnswerDisplayed()
         {
             //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
+            if (calculator.isThereAnswer)
             {
                 resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
+                calculator.isThereAnswer = false;
             }
         }
 
         public void showAndSetAnswer(long finalNum)
         {
-            calculator.setIsThereAnswer();
+            calculator.isThereAnswer = true;
             resultBox.Text = finalNum.ToString();
-            calculator.SetFirstNumber(finalNum);
+            calculator.firstNumber = finalNum;
         }
 
     }
