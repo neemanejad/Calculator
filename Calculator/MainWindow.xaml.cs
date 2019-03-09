@@ -226,24 +226,17 @@ namespace Calculator
             } catch (DivideByZeroException)
             {
                 resultBox.Text = "Cannot Divide by Zero";
-                calculator.isThereAnswer = false;
-                calculator.isThereFullNumber = false;
-                calculator.firstNumberSet = false;
-                calculator.secondNumberSet = false;
+                unsetAll();
                 unsetCurrentOperator();
             } catch (OverflowException)
             {
                 resultBox.Text = "Overflow";
-                calculator.isThereAnswer = false;
-                calculator.isThereFullNumber = false;
-                calculator.firstNumberSet = false;
-                calculator.secondNumberSet = false;
+                unsetAll();
                 unsetCurrentOperator();
             } catch (FormatException)
             {
                 resultBox.Text = resultBox.Text;
-                calculator.isThereAnswer = false;
-                calculator.isThereFullNumber = false;
+                unsetAll();
                 unsetCurrentOperator();
             }
         }
@@ -444,6 +437,14 @@ namespace Calculator
             {
                 return false;
             }
+        }
+
+        public void unsetAll()
+        {
+            calculator.isThereAnswer = false;
+            calculator.isThereFullNumber = false;
+            calculator.firstNumberSet = false;
+            calculator.secondNumberSet = false;
         }
     }
 }
