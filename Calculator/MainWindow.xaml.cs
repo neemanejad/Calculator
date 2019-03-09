@@ -181,6 +181,7 @@ namespace Calculator
         {
             try
             {
+                //See which operator was used and perform the calculation
                 if (calculator.Check(calculator.isPlus))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
@@ -361,7 +362,8 @@ namespace Calculator
             else if (calculator.firstNumberSet)
             {
                 calculator.secondNumberSet = true;
-                calculator.firstNumber = long.Parse(resultBox.Text);
+                calculator.secondNumber = long.Parse(resultBox.Text);
+                calculator.isThereFullNumber = false;
                 equalClick(sender, e);
             } 
         }
@@ -374,5 +376,11 @@ namespace Calculator
                 resultBox.Text = "0";
             }
         }
+
+        public void deleteNum()
+        {
+            //TODO backspace will remove a number from the result box
+        }
+        
     }
 }
