@@ -5,7 +5,7 @@ namespace Calculator
     public class Calc
     {
         public long firstNumber, secondNumber;
-        public bool firstNumberSet, secondNumberSet, isThereAnswer;
+        public bool firstNumberSet, secondNumberSet, isThereFullNumber, isThereAnswer;
         public bool isPlus, isMinus, isMult, isDiv, isExp;
 
         public Calc()
@@ -14,6 +14,7 @@ namespace Calculator
             secondNumber = 0;
             firstNumberSet = false;
             secondNumberSet = false;
+            isThereFullNumber = false;
             isThereAnswer = false;
             isPlus = false;
             isMinus = false;
@@ -28,6 +29,7 @@ namespace Calculator
             this.secondNumber = secondNumber;
             firstNumberSet = false;
             secondNumberSet = false;
+            isThereFullNumber = false;
             isThereAnswer = false;
             isPlus = false;
             isMinus = false;

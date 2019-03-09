@@ -30,61 +30,70 @@ namespace Calculator
 
         private void num0Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("0");
-
         }
 
         private void num1Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("1");
         }
 
         private void num2Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("2");
         }
 
         private void num3Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("3");
         }
 
         private void num4Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("4");
         }
 
         private void num5Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("5");
         }
 
         private void num6Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("6");
         }
 
         private void num7Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("7");
         }
 
         private void num8Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("8");
         }
 
         private void num9Click(object sender, RoutedEventArgs e)
         {
+            checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("9");
         }
@@ -92,16 +101,19 @@ namespace Calculator
         private void clearEntryClick(object sender, RoutedEventArgs e)
         {
             resultBox.Text = "0";
+            calculator.firstNumber = 0;
+            calculator.firstNumberSet = false;
+            calculator.secondNumber = 0;
+            calculator.secondNumberSet = false;
         }
 
         private void plusClick(object sender, RoutedEventArgs e)
         {
             try
             {
-                CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.firstNumber = long.Parse(resultBox.Text);
+                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
                 calculator.isPlus = true;
-                resultBox.Text = "0";
+                calculator.isThereFullNumber = true;
             } catch (FormatException)
             {
                 resultBox.Text = resultBox.Text;
@@ -112,10 +124,9 @@ namespace Calculator
         {
             try
             {
-                CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.firstNumber = long.Parse(resultBox.Text);
+                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
                 calculator.isMinus = true;
-                resultBox.Text = "0";
+                calculator.isThereFullNumber = true;
             } catch (FormatException)
             {
                 resultBox.Text = resultBox.Text;
@@ -126,10 +137,9 @@ namespace Calculator
         {
             try
             {
-                CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.firstNumber = long.Parse(resultBox.Text);
+                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
                 calculator.isMult = true;
-                resultBox.Text = "0";
+                calculator.isThereFullNumber = true;
             } catch (FormatException)
             {
                 resultBox.Text = resultBox.Text;
@@ -141,10 +151,9 @@ namespace Calculator
         {
             try
             {
-                CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.firstNumber = long.Parse(resultBox.Text);
+                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
                 calculator.isDiv = true;
-                resultBox.Text = "0";
+                calculator.isThereFullNumber = true;
             }
             catch (FormatException)
             {
@@ -157,10 +166,9 @@ namespace Calculator
         {
             try
             {
-                CheckOperators(); //Checks if user selected a different operator before and unsets it
-                calculator.firstNumber = long.Parse(resultBox.Text);
+                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
                 calculator.isExp = true;
-                resultBox.Text = "0";
+                calculator.isThereFullNumber = true;
             }
             catch (FormatException)
             {
@@ -177,31 +185,31 @@ namespace Calculator
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Add();
-                    showAndSetAnswer(finalNum);
+                    showAndSetAnswer(finalNum, sender, e);
                 }
                 else if (calculator.Check(calculator.isMinus))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Subtract();
-                    showAndSetAnswer(finalNum);
+                    showAndSetAnswer(finalNum, sender, e);
                 }
                 else if (calculator.Check(calculator.isMult))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Multiply();
-                    showAndSetAnswer(finalNum);
+                    showAndSetAnswer(finalNum, sender, e);
                 }
                 else if (calculator.Check(calculator.isDiv))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Divide();
-                    showAndSetAnswer(finalNum);
+                    showAndSetAnswer(finalNum, sender, e);
                 }
                 else if (calculator.Check(calculator.isExp))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
                     long finalNum = calculator.Exponentiate();
-                    showAndSetAnswer(finalNum);
+                    showAndSetAnswer(finalNum, sender, e);
                 }
             } catch (DivideByZeroException)
             {
@@ -218,7 +226,7 @@ namespace Calculator
             }
         }
 
-        public void CheckOperators()
+        public void unsetCurrentOperator()
         {
             //Unset operator if it's active
             if (calculator.Check(calculator.isPlus))
@@ -332,12 +340,39 @@ namespace Calculator
             }
         }
 
-        public void showAndSetAnswer(long finalNum)
+        public void showAndSetAnswer(long finalNum, object sender, RoutedEventArgs e)
         {
             calculator.isThereAnswer = true;
             resultBox.Text = finalNum.ToString();
-            calculator.firstNumber = finalNum;
+            calculator.firstNumber = 0;
+            calculator.firstNumberSet = false;
+            calculator.secondNumber = 0;
+            calculator.secondNumberSet = false;
         }
 
+        public void setNum(object sender, RoutedEventArgs e)
+        {
+            if (!calculator.firstNumberSet)
+            {
+                calculator.firstNumberSet = true;
+                calculator.firstNumber = long.Parse(resultBox.Text);
+                calculator.isThereFullNumber = false;
+            }
+            else if (calculator.firstNumberSet)
+            {
+                calculator.secondNumberSet = true;
+                calculator.firstNumber = long.Parse(resultBox.Text);
+                equalClick(sender, e);
+            } 
+        }
+
+        public void checkFullNumberDisplayed(object sender, RoutedEventArgs e)
+        {
+            if (calculator.isThereFullNumber)
+            {
+                setNum(sender, e);
+                resultBox.Text = "0";
+            }
+        }
     }
 }

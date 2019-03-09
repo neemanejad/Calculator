@@ -8,7 +8,7 @@
         Title="Neema's Calculator" Height="322.311" Width="395" KeyDown="keyboardNumPress" MinWidth="412" MinHeight="322.311" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid x:Name="grid">
 
-        <TextBlock x:Name="resultBox" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="51" Text="0" FontSize="36" Background="#FFC9C9C9" HorizontalAlignment="Left" Width="379" TextAlignment="Right"/>
+        <TextBlock x:Name="resultBox" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="51" Text="0" FontSize="36" Background="#FFC9C9C9" HorizontalAlignment="Left" Width="379"/>
         <Button x:Name="num0" Content="0" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="187" Height="48" Click="num0Click" FontWeight="Bold" FontSize="16"/>
         <Button x:Name="num1" Content="1" HorizontalAlignment="Left" Margin="10,63,0,0" VerticalAlignment="Top" Width="59" Height="48" Click="num1Click" FontWeight="Bold" FontSize="16"/>
         <Button x:Name="num2" Content="2" HorizontalAlignment="Left" Margin="74,63,0,0" VerticalAlignment="Top" Width="59" Height="48" Click="num2Click" FontWeight="Bold" FontSize="16"/>
