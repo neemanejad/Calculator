@@ -30,6 +30,7 @@ namespace Calculator
 
         private void num0Click(object sender, RoutedEventArgs e)
         {
+            //number 0 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("0");
@@ -37,6 +38,7 @@ namespace Calculator
 
         private void num1Click(object sender, RoutedEventArgs e)
         {
+            //number 1 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("1");
@@ -44,6 +46,7 @@ namespace Calculator
 
         private void num2Click(object sender, RoutedEventArgs e)
         {
+            //number 2 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("2");
@@ -51,6 +54,7 @@ namespace Calculator
 
         private void num3Click(object sender, RoutedEventArgs e)
         {
+            //number 3 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("3");
@@ -58,6 +62,7 @@ namespace Calculator
 
         private void num4Click(object sender, RoutedEventArgs e)
         {
+            //number 4 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("4");
@@ -65,6 +70,7 @@ namespace Calculator
 
         private void num5Click(object sender, RoutedEventArgs e)
         {
+            //number 5 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("5");
@@ -72,6 +78,7 @@ namespace Calculator
 
         private void num6Click(object sender, RoutedEventArgs e)
         {
+            //number 6 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("6");
@@ -79,6 +86,7 @@ namespace Calculator
 
         private void num7Click(object sender, RoutedEventArgs e)
         {
+            //number 7 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("7");
@@ -86,6 +94,7 @@ namespace Calculator
 
         private void num8Click(object sender, RoutedEventArgs e)
         {
+            //number 8 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("8");
@@ -93,6 +102,7 @@ namespace Calculator
 
         private void num9Click(object sender, RoutedEventArgs e)
         {
+            //number 9 input
             checkFullNumberDisplayed(sender, e);
             checkIfAnswerDisplayed();
             insertNumInResultBox("9");
@@ -100,6 +110,7 @@ namespace Calculator
 
         private void clearEntryClick(object sender, RoutedEventArgs e)
         {
+            //'C' input
             resultBox.Text = "0";
             calculator.firstNumber = 0;
             calculator.firstNumberSet = false;
@@ -185,45 +196,55 @@ namespace Calculator
                 if (calculator.Check(calculator.isPlus))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
-                    long finalNum = calculator.Add();
-                    showAndSetAnswer(finalNum, sender, e);
+                    calculator.answer = calculator.Add();
+                    showAndSetAnswer(calculator.answer, sender, e);
                 }
                 else if (calculator.Check(calculator.isMinus))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
-                    long finalNum = calculator.Subtract();
-                    showAndSetAnswer(finalNum, sender, e);
+                    calculator.answer = calculator.Subtract();
+                    showAndSetAnswer(calculator.answer, sender, e);
                 }
                 else if (calculator.Check(calculator.isMult))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
-                    long finalNum = calculator.Multiply();
-                    showAndSetAnswer(finalNum, sender, e);
+                    calculator.answer = calculator.Multiply();
+                    showAndSetAnswer(calculator.answer, sender, e);
                 }
                 else if (calculator.Check(calculator.isDiv))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
-                    long finalNum = calculator.Divide();
-                    showAndSetAnswer(finalNum, sender, e);
+                    calculator.answer = calculator.Divide();
+                    showAndSetAnswer(calculator.answer, sender, e);
                 }
                 else if (calculator.Check(calculator.isExp))
                 {
                     calculator.secondNumber = (long.Parse(resultBox.Text));
-                    long finalNum = calculator.Exponentiate();
-                    showAndSetAnswer(finalNum, sender, e);
+                    calculator.answer = calculator.Exponentiate();
+                    showAndSetAnswer(calculator.answer, sender, e);
                 }
             } catch (DivideByZeroException)
             {
                 resultBox.Text = "Cannot Divide by Zero";
-                calculator.isThereAnswer = true;
+                calculator.isThereAnswer = false;
+                calculator.isThereFullNumber = false;
+                calculator.firstNumberSet = false;
+                calculator.secondNumberSet = false;
+                unsetCurrentOperator();
             } catch (OverflowException)
             {
                 resultBox.Text = "Overflow";
-                calculator.isThereAnswer = true;
+                calculator.isThereAnswer = false;
+                calculator.isThereFullNumber = false;
+                calculator.firstNumberSet = false;
+                calculator.secondNumberSet = false;
+                unsetCurrentOperator();
             } catch (FormatException)
             {
                 resultBox.Text = resultBox.Text;
-                calculator.isThereAnswer = true;
+                calculator.isThereAnswer = false;
+                calculator.isThereFullNumber = false;
+                unsetCurrentOperator();
             }
         }
 
@@ -254,6 +275,7 @@ namespace Calculator
 
         private void keyboardNumPress(object sender, KeyEventArgs e)
         {
+            //Keyboard input
             if (e.Key == Key.NumPad0 || e.Key == Key.D0)
             {
                 num0Click(sender, e);
@@ -325,6 +347,7 @@ namespace Calculator
             //Insert number in result box after user inputs number
             try
             {
+                checkIfAnswerDisplayed();
                 string newNumStr = resultBox.Text + num;
                 long newNum = long.Parse(newNumStr);
                 resultBox.Text = newNum.ToString();
@@ -347,6 +370,7 @@ namespace Calculator
 
         public void showAndSetAnswer(long finalNum, object sender, RoutedEventArgs e)
         {
+            //Show answer in result box
             calculator.isThereAnswer = true;
             resultBox.Text = finalNum.ToString();
             calculator.firstNumber = 0;
@@ -357,6 +381,7 @@ namespace Calculator
 
         public void setNum(object sender, RoutedEventArgs e)
         {
+            //Decides if number inputted by user should be equal to number 1 or number 2
             if (!calculator.firstNumberSet)
             {
                 calculator.firstNumberSet = true;
@@ -369,20 +394,30 @@ namespace Calculator
                 calculator.secondNumber = long.Parse(resultBox.Text);
                 calculator.isThereFullNumber = false;
                 equalClick(sender, e);
-            } 
+            }
         }
 
         public void checkFullNumberDisplayed(object sender, RoutedEventArgs e)
         {
-            if (calculator.isThereFullNumber)
+            //Checks if user inputted their number after receiving an operator input, then clears result box for new number
+            if (checkIfNumberOrNot())
             {
-                setNum(sender, e);
+                if (calculator.isThereFullNumber)
+                {
+                    setNum(sender, e);
+                    resultBox.Text = "0";
+                }
+            }
+            else
+            {
                 resultBox.Text = "0";
             }
+            
         }
 
         public void deleteNum()
         {
+            //Deletes numbers from screen if user wants to make changes to inputted number
             if (calculator.isThereFullNumber || calculator.isThereAnswer)
             {
                 return;
@@ -395,8 +430,20 @@ namespace Calculator
                     resultBox.Text = "0";
                 }
             }
-            
         }
-        
+
+        public bool checkIfNumberOrNot()
+        {
+            //Checks if content in resultbox is a number or not
+            long tmp;
+            try
+            {
+                tmp = long.Parse(resultBox.Text);
+                return true;
+            } catch (FormatException)
+            {
+                return false;
+            }
+        }
     }
 }
