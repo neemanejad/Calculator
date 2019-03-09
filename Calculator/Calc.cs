@@ -5,13 +5,15 @@ namespace Calculator
     public class Calc
     {
         private long firstNumber, secondNumber;
-        private bool isThereAnswer;
+        private bool firstNumberSet, secondNumberSet, isThereAnswer;
         private bool isPlus, isMinus, isMult, isDiv, isExp;
 
         public Calc()
         {
             firstNumber = 0;
             secondNumber = 0;
+            firstNumberSet = false;
+            secondNumberSet = false;
             isThereAnswer = false;
             isPlus = false;
             isMinus = false;
@@ -24,6 +26,8 @@ namespace Calculator
         {
             this.firstNumber = firstNumber;
             this.secondNumber = secondNumber;
+            firstNumberSet = false;
+            secondNumberSet = false;
             isThereAnswer = false;
             isPlus = false;
             isMinus = false;
@@ -50,6 +54,35 @@ namespace Calculator
             }
 
             return false;
+        }
+
+        public void setFirstNumberSet()
+        {
+            firstNumberSet = true;
+        }
+
+        public void unsetFirstNumberSet()
+        {
+            firstNumberSet = false;
+        }
+
+        public bool getFirstNumberSet()
+        {
+            return firstNumberSet;
+        }
+
+        public void setSecondsNumberSet()
+        {
+            firstNumberSet = true;
+        }
+
+        public void unsetSecondNumberSet()
+        {
+            firstNumberSet = false;
+        }
+        public bool getSecondNumberSet()
+        {
+            return secondNumberSet;
         }
 
         public void setIsThereAnswer()

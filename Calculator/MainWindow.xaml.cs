@@ -30,212 +30,63 @@ namespace Calculator
 
         private void num0Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "0";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("0");
 
         }
 
         private void num1Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "1";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("1");
         }
 
         private void num2Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "2";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            } catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("2");
         }
 
         private void num3Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "3";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("3");
         }
 
         private void num4Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "4";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("4");
         }
 
         private void num5Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "5";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("5");
         }
 
         private void num6Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "6";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("6");
         }
 
         private void num7Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "7";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("7");
         }
 
         private void num8Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "8";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("8");
         }
 
         private void num9Click(object sender, RoutedEventArgs e)
         {
-            //Checks to is if answer was just displayed, and erase it if it was
-            if (calculator.getIsThereAnswer())
-            {
-                resultBox.Text = "0";
-                calculator.unsetIsThereAnswer();
-            }
-
-            try
-            {
-                string newNumStr = resultBox.Text + "9";
-                long newNum = long.Parse(newNumStr);
-                resultBox.Text = newNum.ToString();
-            }
-            catch (OverflowException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            checkIfAnswerDisplayed();
+            insertNumInResultBox("9");
         }
 
         private void clearEntryClick(object sender, RoutedEventArgs e)
@@ -464,6 +315,33 @@ namespace Calculator
             }
 
         }
+
+        public void insertNumInResultBox(string num)
+        {
+            //Insert number in result box after user inputs number
+            try
+            {
+                string newNumStr = resultBox.Text + num;
+                long newNum = long.Parse(newNumStr);
+                resultBox.Text = newNum.ToString();
+            }
+            catch (OverflowException)
+            {
+                resultBox.Text = resultBox.Text;
+            }
+        }
+
+        public void checkIfAnswerDisplayed()
+        {
+            //Checks to is if answer was just displayed, and erase it if it was
+            if (calculator.getIsThereAnswer())
+            {
+                resultBox.Text = "0";
+                calculator.unsetIsThereAnswer();
+            }
+        }
+
+
 
     }
 }
