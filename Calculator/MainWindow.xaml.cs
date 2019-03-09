@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace Calculator
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    //TODO Fix mathematical calculations with multiple numbers one after another
+    //TODO Make window adjustable and allow buttons to scale based on screen size
+    //TODO Impliment decimal calculations
     public partial class MainWindow : Window
     {
         //Make calculator object for calculation
@@ -312,6 +312,10 @@ namespace Calculator
             else if (e.Key == Key.Enter)
             {
                 equalClick(sender, e);
+            } else if (e.Key == Key.Back)
+            {
+                //Remove characters from resultbox
+                deleteNum();
             }
 
         }
@@ -379,7 +383,19 @@ namespace Calculator
 
         public void deleteNum()
         {
-            //TODO backspace will remove a number from the result box
+            if (calculator.isThereFullNumber || calculator.isThereAnswer)
+            {
+                return;
+            }
+            else
+            {
+                resultBox.Text = resultBox.Text.Remove(resultBox.Text.Length - 1, 1);
+                if (resultBox.Text.Length == 0)
+                {
+                    resultBox.Text = "0";
+                }
+            }
+            
         }
         
     }
