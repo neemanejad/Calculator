@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="Neema's Calculator" Height="322.311" Width="395" KeyDown="keyboardNumPress" MinWidth="412" MinHeight="322.311" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Neema's Calculator" Height="322.311" Width="395" KeyDown="keyboardNumPress" MinWidth="412" MinHeight="322.311" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="calculator.ico">
     <Grid x:Name="grid">
 
         <TextBlock x:Name="resultBox" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="51" Text="0" FontSize="36" Background="#FFC9C9C9" HorizontalAlignment="Left" Width="379"/>
