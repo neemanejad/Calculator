@@ -177,41 +177,31 @@ namespace Calculator
                 {
                     calculator.SetSecondNumber(long.Parse(resultBox.Text));
                     long finalNum = calculator.Add();
-                    calculator.setIsThereAnswer();
-                    resultBox.Text = finalNum.ToString();
-                    calculator.SetFirstNumber(finalNum);
+                    showAndSetAnswer(finalNum);
                 }
                 else if (calculator.Check(calculator.getIsMinus()))
                 {
                     calculator.SetSecondNumber(long.Parse(resultBox.Text));
                     long finalNum = calculator.Subtract();
-                    calculator.setIsThereAnswer();
-                    resultBox.Text = finalNum.ToString();
-                    calculator.SetFirstNumber(finalNum);
+                    showAndSetAnswer(finalNum);
                 }
                 else if (calculator.Check(calculator.getIsMult()))
                 {
                     calculator.SetSecondNumber(long.Parse(resultBox.Text));
                     long finalNum = calculator.Multiply();
-                    calculator.setIsThereAnswer();
-                    resultBox.Text = finalNum.ToString();
-                    calculator.SetFirstNumber(finalNum);
+                    showAndSetAnswer(finalNum);
                 }
                 else if (calculator.Check(calculator.getIsDiv()))
                 {
                     calculator.SetSecondNumber(long.Parse(resultBox.Text));
                     long finalNum = calculator.Divide();
-                    calculator.setIsThereAnswer();
-                    resultBox.Text = finalNum.ToString();
-                    calculator.SetFirstNumber(finalNum);
+                    showAndSetAnswer(finalNum);
                 }
                 else if (calculator.Check(calculator.getIsExp()))
                 {
                     calculator.SetSecondNumber(long.Parse(resultBox.Text));
                     long finalNum = calculator.Exponentiate();
-                    calculator.setIsThereAnswer();
-                    resultBox.Text = finalNum.ToString();
-                    calculator.SetFirstNumber(finalNum);
+                    showAndSetAnswer(finalNum);
                 }
             } catch (DivideByZeroException)
             {
@@ -341,7 +331,12 @@ namespace Calculator
             }
         }
 
-
+        public void showAndSetAnswer(long finalNum)
+        {
+            calculator.setIsThereAnswer();
+            resultBox.Text = finalNum.ToString();
+            calculator.SetFirstNumber(finalNum);
+        }
 
     }
 }

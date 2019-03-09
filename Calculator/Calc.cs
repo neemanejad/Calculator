@@ -197,9 +197,10 @@ namespace Calculator
 
         public long Exponentiate()
         {
+            long origNum = firstNumber;
             for (int i = 1; i < secondNumber; i++)
             {
-                firstNumber *= firstNumber;
+                firstNumber *= origNum;
             }
 
             return firstNumber;
