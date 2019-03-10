@@ -30,74 +30,70 @@ namespace Calculator
         private void num0Click(object sender, RoutedEventArgs e)
         {
             //number 0 input
-            checkFullNumberDisplayed(sender, e);
-            if (resultBox.Text.Length == 1 && resultBox.Text[0] == '0') //Checks if only zero is in result box
-            {
-                return;
-            }
+            clearScreen();
             insertInputNumInResultBox("0");
         }
 
         private void num1Click(object sender, RoutedEventArgs e)
         {
             //number 1 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("1");
         }
 
         private void num2Click(object sender, RoutedEventArgs e)
         {
             //number 2 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("2");
         }
 
         private void num3Click(object sender, RoutedEventArgs e)
         {
             //number 3 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("3");
         }
 
         private void num4Click(object sender, RoutedEventArgs e)
         {
             //number 4 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("4");
         }
 
         private void num5Click(object sender, RoutedEventArgs e)
         {
             //number 5 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("5");
         }
 
         private void num6Click(object sender, RoutedEventArgs e)
         {
             //number 6 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("6");
         }
 
         private void num7Click(object sender, RoutedEventArgs e)
         {
             //number 7 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("7");
         }
 
         private void num8Click(object sender, RoutedEventArgs e)
         {
             //number 8 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("8");
         }
 
         private void num9Click(object sender, RoutedEventArgs e)
         {
             //number 9 input
-            checkFullNumberDisplayed(sender, e);
+            clearScreen();
             insertInputNumInResultBox("9");
         }
 
@@ -106,7 +102,6 @@ namespace Calculator
             //Insert number in result box after user inputs desired number
             try
             {
-                //checkIfAnswerDisplayed();
                 if (resultBox.Text.Length == 1 && (resultBox.Text)[0] == '0') //Checks if only zero is in result box
                 {
                     resultBox.Text = num;
@@ -126,7 +121,7 @@ namespace Calculator
         public void deleteNum()
         {
             //Deletes numbers from screen if user wants to make changes to inputted number
-            if (calculator.isNumInputFinished || calculator.isThereAnswer)
+            if (calculator.canScreenBeCleared || calculator.isThereAnswer)
             {
                 return;
             }
@@ -142,22 +137,16 @@ namespace Calculator
 
         private void decimalClick(object sender, RoutedEventArgs e)
         {
-            checkFullNumberDisplayed(sender, e);
-            if (calculator.isNumInputFinished)
+            clearScreen();
+            if (calculator.canScreenBeCleared)
             {
                 resultBox.Text = "0.";
-                calculator.isNumInputFinished = false;
+                calculator.canScreenBeCleared = false;
             }
             else if (!resultBox.Text.Contains("."))
             {
                 resultBox.Text = resultBox.Text + ".";
-            }
-            //If result box only has ".", fix it with "0."
-            if (resultBox.Text.Length == 1 && resultBox.Text[0] == '.')
-            {
-                resultBox.Text = "0" + resultBox.Text;
-                calculator.isNumInputFinished = false;
-            }
+            } 
         }
 
         private void clearEntryClick(object sender, RoutedEventArgs e)
@@ -167,66 +156,69 @@ namespace Calculator
             calculator.firstNumber = 0.0;
             calculator.firstNumberSet = false;
             calculator.secondNumber = 0.0;
-            calculator.isNumInputFinished = false;
+            calculator.canScreenBeCleared = false;
         }
 
         private void plusClick(object sender, RoutedEventArgs e)
         {
-            if (!checkIfNumberOrNot())
+            if (!isNumber())
             {
                 return;
             }
+            isThereAnswer();
             unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
             calculator.isPlus = true;
-            calculator.isNumInputFinished = true;
+            calculator.canScreenBeCleared = true;
             
         }
 
         private void minusClick(object sender, RoutedEventArgs e)
         {
-            if (!checkIfNumberOrNot())
+            if (!isNumber())
             {
                 return;
             }
+            isThereAnswer();
             unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
             calculator.isMinus = true;
-            calculator.isNumInputFinished = true;
+            calculator.canScreenBeCleared = true;
             
         }
 
         private void multiplyClick(object sender, RoutedEventArgs e)
         {
-            if (!checkIfNumberOrNot())
+            if (!isNumber())
             {
                 return;
             }
+            isThereAnswer();
             unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
             calculator.isMult = true;
-            calculator.isNumInputFinished = true;
-            
+            calculator.canScreenBeCleared = true;
         }
 
         private void divideClick(object sender, RoutedEventArgs e)
         {
-            if (!checkIfNumberOrNot())
+            if (!isNumber())
             {
                 return;
             }
+            isThereAnswer();
             unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
             calculator.isDiv = true;
-            calculator.isNumInputFinished = true;
-            
+            calculator.canScreenBeCleared = true; 
         }
 
         private void exponentClick(object sender, RoutedEventArgs e)
         {
-            if (!checkIfNumberOrNot())
+            if (!isNumber())
             {
                 return;
             }
+            isThereAnswer();
             unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
             calculator.isExp = true;
-            calculator.isNumInputFinished = true;
+            calculator.canScreenBeCleared = true;
             
             
         }
@@ -273,13 +265,25 @@ namespace Calculator
                 }
             } catch (DivideByZeroException)
             {
-                clearForExceptions();
                 resultBox.Text = "Cannot Divide by Zero";
+                clearForExceptions();
             } catch (FormatException)
             {
-                clearForExceptions();
                 resultBox.Text = resultBox.Text;
+                clearForExceptions();
             }
+        }
+
+        public void showAndSetAnswer(object sender, RoutedEventArgs e)
+        {
+            //Show answer in result box
+            calculator.isThereAnswer = true;
+            calculator.canScreenBeCleared = true;
+            calculator.firstNumberSet = true;
+            calculator.secondNumber = 0.0;
+            calculator.secondNumberSet = false;
+            calculator.firstNumber = calculator.answer;
+            resultBox.Text = calculator.answer.ToString();
         }
 
         public void unsetCurrentOperator()
@@ -381,58 +385,9 @@ namespace Calculator
 
         }
 
-        public void showAndSetAnswer(object sender, RoutedEventArgs e)
-        {
-            //Show answer in result box
-            calculator.isThereAnswer = true;
-            calculator.isNumInputFinished = true;
-            calculator.firstNumberSet = true;
-            resultBox.Text = calculator.answer.ToString();
-            calculator.firstNumber = calculator.answer;
-            
-        }
-
-        public void checkFullNumberDisplayed(object sender, RoutedEventArgs e)
-        {
-            //Checks if user inputted their number after receiving an operator input, then clears result box for new number
-            if (checkIfNumberOrNot())
-            {
-                //If there was an answer previously and a number was just inputted, it means user wants to input a whole new firstNumber and secondNumber
-                if (calculator.isThereAnswer)
-                {
-                    unsetAll();
-                    resultBox.Text = "";
-                    
-                }
-                //If an answer wasn't previously received, check if operator was pressed checking in user completed their input
-                else if (calculator.isNumInputFinished)
-                {
-                    setNum(sender, e);
-                }
-            }
-            else
-            {
-                resultBox.Text = "";
-            }
-            
-        }
-
-        public void setNum(object sender, RoutedEventArgs e)
-        {
-            //Decides if number inputted by user is firstNumber or SecondNumber
-            if (!calculator.firstNumberSet)
-            {
-                calculator.firstNumberSet = true;
-                calculator.firstNumber = double.Parse(resultBox.Text);
-                resultBox.Text = "";
-            }
-            else
-            {
-                calculator.secondNumber = double.Parse(resultBox.Text);
-            }
-        }
         
-        public bool checkIfNumberOrNot()
+        
+        public bool isNumber()
         {
             //Checks if content in resultbox is an error message
             dynamic tmp = 0;
@@ -446,22 +401,55 @@ namespace Calculator
             }
         }
 
-        public void unsetAll()
-        {
-            //Unset all booleans for firstNumber, Answer, and contents in result box
-            calculator.firstNumberSet = false;
-            calculator.isThereAnswer = false;
-            calculator.isNumInputFinished = false;
-        }
-
         public void clearForExceptions()
         {
+            //Clear all information when an error message is displayed
             calculator.firstNumber = 0.0;
             calculator.firstNumberSet = false;
             calculator.secondNumber = 0.0;
+            calculator.secondNumberSet = false;
             calculator.isThereAnswer = false;
-            calculator.isNumInputFinished = false;
+            calculator.canScreenBeCleared = false;
             unsetCurrentOperator();
+        }
+
+        public void clearScreen()
+        {
+            //Clear result box if there's an error message
+            if (!isNumber())
+            {
+                resultBox.Text = "0";
+            }
+            
+            //Checks if user put in their full desired number 
+            if (calculator.canScreenBeCleared)
+            {
+                if (calculator.isThereAnswer) //Clear all information if answer was previously given and user inputs a number
+                {
+                    clearForExceptions();
+                }
+                else if (!calculator.firstNumberSet)
+                {
+                    calculator.firstNumber = double.Parse(resultBox.Text);
+                    calculator.firstNumberSet = true;
+                }
+                else if (!calculator.secondNumberSet)
+                {
+                    calculator.secondNumber = double.Parse(resultBox.Text);
+                    calculator.secondNumberSet = true;
+                }
+                resultBox.Text = "0";
+                calculator.canScreenBeCleared = false;
+            }
+        }
+
+        public void isThereAnswer()
+        {
+            if (calculator.isThereAnswer)
+            {
+                calculator.answer = 0;
+                calculator.isThereAnswer = false;
+            }
         }
     }
 }
