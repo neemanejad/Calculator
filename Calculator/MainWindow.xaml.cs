@@ -16,7 +16,6 @@ using System.Windows.Shapes;
 namespace Calculator
 {
     //TODO Fix mathematical calculations with multiple numbers one after another
-    //TODO Make window adjustable and allow buttons to scale based on screen size
     public partial class MainWindow : Window
     {
         //Make calculator object for calculation
@@ -286,6 +285,36 @@ namespace Calculator
             resultBox.Text = calculator.answer.ToString();
         }
 
+        public void clearScreen()
+        {
+            //Clear result box if there's an error message
+            if (!isNumber())
+            {
+                resultBox.Text = "0";
+            }
+            
+            //Checks if user put in their full desired number 
+            if (calculator.canScreenBeCleared)
+            {
+                if (calculator.isThereAnswer) //Clear all information if answer was previously given and user inputs a number
+                {
+                    clearForExceptions();
+                }
+                else if (!calculator.firstNumberSet) //Assigns first number
+                {
+                    calculator.firstNumber = double.Parse(resultBox.Text);
+                    calculator.firstNumberSet = true;
+                }
+                else if (!calculator.secondNumberSet) //Assigns second number
+                {
+                    calculator.secondNumber = double.Parse(resultBox.Text);
+                    calculator.secondNumberSet = true;
+                }
+                resultBox.Text = "0";
+                calculator.canScreenBeCleared = false;
+            }
+        }
+
         public void unsetCurrentOperator()
         {
             //Unset operator if it's active
@@ -308,6 +337,42 @@ namespace Calculator
             else if (calculator.Check(calculator.isExp))
             {
                 calculator.isExp = false;
+            }
+        }
+
+        public bool isNumber()
+        {
+            //Checks if content in resultbox is an error message
+            dynamic tmp = 0;
+            try
+            {
+                tmp = double.Parse(resultBox.Text);
+                return true;
+            } catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+        public void clearForExceptions()
+        {
+            //Clear all information when an error message is displayed
+            calculator.firstNumber = 0.0;
+            calculator.firstNumberSet = false;
+            calculator.secondNumber = 0.0;
+            calculator.secondNumberSet = false;
+            calculator.isThereAnswer = false;
+            calculator.canScreenBeCleared = false;
+            unsetCurrentOperator();
+        }
+
+        public void isThereAnswer()
+        {
+            //Check if answer was given or not
+            if (calculator.isThereAnswer)
+            {
+                calculator.answer = 0;
+                calculator.isThereAnswer = false;
             }
         }
 
@@ -383,73 +448,6 @@ namespace Calculator
                 deleteNum();
             }
 
-        }
-
-        
-        
-        public bool isNumber()
-        {
-            //Checks if content in resultbox is an error message
-            dynamic tmp = 0;
-            try
-            {
-                tmp = double.Parse(resultBox.Text);
-                return true;
-            } catch (FormatException)
-            {
-                return false;
-            }
-        }
-
-        public void clearForExceptions()
-        {
-            //Clear all information when an error message is displayed
-            calculator.firstNumber = 0.0;
-            calculator.firstNumberSet = false;
-            calculator.secondNumber = 0.0;
-            calculator.secondNumberSet = false;
-            calculator.isThereAnswer = false;
-            calculator.canScreenBeCleared = false;
-            unsetCurrentOperator();
-        }
-
-        public void clearScreen()
-        {
-            //Clear result box if there's an error message
-            if (!isNumber())
-            {
-                resultBox.Text = "0";
-            }
-            
-            //Checks if user put in their full desired number 
-            if (calculator.canScreenBeCleared)
-            {
-                if (calculator.isThereAnswer) //Clear all information if answer was previously given and user inputs a number
-                {
-                    clearForExceptions();
-                }
-                else if (!calculator.firstNumberSet)
-                {
-                    calculator.firstNumber = double.Parse(resultBox.Text);
-                    calculator.firstNumberSet = true;
-                }
-                else if (!calculator.secondNumberSet)
-                {
-                    calculator.secondNumber = double.Parse(resultBox.Text);
-                    calculator.secondNumberSet = true;
-                }
-                resultBox.Text = "0";
-                calculator.canScreenBeCleared = false;
-            }
-        }
-
-        public void isThereAnswer()
-        {
-            if (calculator.isThereAnswer)
-            {
-                calculator.answer = 0;
-                calculator.isThereAnswer = false;
-            }
         }
     }
 }
