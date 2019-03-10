@@ -152,10 +152,7 @@ namespace Calculator
         {
             //'C' input
             resultBox.Text = "0";
-            calculator.firstNumber = 0.0;
-            calculator.firstNumberSet = false;
-            calculator.secondNumber = 0.0;
-            calculator.canScreenBeCleared = false;
+            clearAll();
         }
 
         private void plusClick(object sender, RoutedEventArgs e)
@@ -265,11 +262,11 @@ namespace Calculator
             } catch (DivideByZeroException)
             {
                 resultBox.Text = "Cannot Divide by Zero";
-                clearForExceptions();
+                clearAll();
             } catch (FormatException)
             {
                 resultBox.Text = resultBox.Text;
-                clearForExceptions();
+                clearAll();
             }
         }
 
@@ -298,7 +295,7 @@ namespace Calculator
             {
                 if (calculator.isThereAnswer) //Clear all information if answer was previously given and user inputs a number
                 {
-                    clearForExceptions();
+                    clearAll();
                 }
                 else if (!calculator.firstNumberSet) //Assigns first number
                 {
@@ -354,9 +351,9 @@ namespace Calculator
             }
         }
 
-        public void clearForExceptions()
+        public void clearAll()
         {
-            //Clear all information when an error message is displayed
+            //Clear all information 
             calculator.firstNumber = 0.0;
             calculator.firstNumberSet = false;
             calculator.secondNumber = 0.0;
@@ -441,6 +438,10 @@ namespace Calculator
             else if (e.Key == Key.Decimal)
             {
                 decimalClick(sender, e);
+            }
+            else if (e.Key == Key.C)
+            {
+                clearEntryClick(sender, e);
             }
             else if (e.Key == Key.Back)
             {

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
         Title="Neema's Calculator" Height="322.311" Width="395" KeyDown="keyboardNumPress" MinWidth="412" MinHeight="322.311" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="calculator.ico">
-    <Grid x:Name="grid">
+    <Grid x:Name="grid" KeyDown="keyboardNumPress">
 
         <TextBlock x:Name="resultBox" Margin="10,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="51" Text="0" FontSize="36" Background="#FFC9C9C9" HorizontalAlignment="Left" Width="379"/>
         <Button x:Name="num0" Content="0" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Width="187" Height="48" Click="num0Click" FontWeight="Bold" FontSize="16"/>
@@ -25,8 +25,8 @@
         <Button x:Name="plusButton" Content="+" HorizontalAlignment="Left" Margin="202,63,0,0" VerticalAlignment="Top" Width="59" Height="65" FontSize="24" FontWeight="Bold" Click="plusClick"/>
         <Button x:Name="multiplyButton" Content="*" HorizontalAlignment="Left" Margin="202,133,0,0" VerticalAlignment="Top" Width="59" Height="65" FontSize="24" FontWeight="Bold" Click="multiplyClick"/>
         <Button x:Name="divideButton" Content="/" HorizontalAlignment="Left" Margin="266,133,0,0" VerticalAlignment="Top" Width="59" Height="65" FontSize="24" FontWeight="Bold" Click="divideClick"/>
-        <Button x:Name="clearEntryButton" Content="C" HorizontalAlignment="Left" Margin="266,203,0,0" VerticalAlignment="Top" Width="59" Height="67" FontSize="24" FontWeight="Bold" Click="clearEntryClick"/>
         <Button x:Name="decimalButton" Content="." HorizontalAlignment="Left" Margin="202,203,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.427,0.633" Height="67" Click="decimalClick" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="clearEntry" Content="C" HorizontalAlignment="Left" Margin="266,203,0,0" VerticalAlignment="Top" Width="59" Height="67" Click="clearEntryClick" FontWeight="Bold" FontSize="20"/>
 
     </Grid>
 </Window>
