@@ -6,4 +6,4 @@ Calculator features:
 - Handles both integer and decimal values
 
 Known Issues:
-- Can't combine mouse and keyboard inputs (#1)
+- Can't combine mouse and keyboard inputs https://github.com/sharkcooper/Calculator/issues/1#issue-419233758
