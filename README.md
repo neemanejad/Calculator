@@ -6,5 +6,4 @@ Calculator features:
 - Handles both integer and decimal values
 
 Known Issues:
-- If user wants to mix mouse inputs with keyboard inputs, the 'Enter' key on the keyboard is failed to be recognized as an input during
-    runtime.
+- Can't combine mouse and keyboard inputs (#1)
