@@ -31,7 +31,7 @@ namespace Calculator
         {
             //number 0 input
             checkFullNumberDisplayed(sender, e);
-            if (resultBox.Text.Length == 1 && (resultBox.Text)[0] == '0') //Checks if only zero is in result box
+            if (resultBox.Text.Length == 1 && resultBox.Text[0] == '0') //Checks if only zero is in result box
             {
                 return;
             }
@@ -152,6 +152,12 @@ namespace Calculator
             {
                 resultBox.Text = resultBox.Text + ".";
             }
+            //If result box only has ".", fix it with "0."
+            if (resultBox.Text.Length == 1 && resultBox.Text[0] == '.')
+            {
+                resultBox.Text = "0" + resultBox.Text;
+                calculator.isNumInputFinished = false;
+            }
         }
 
         private void clearEntryClick(object sender, RoutedEventArgs e)
@@ -166,71 +172,62 @@ namespace Calculator
 
         private void plusClick(object sender, RoutedEventArgs e)
         {
-            try
+            if (!checkIfNumberOrNot())
             {
-                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
-                calculator.isPlus = true;
-                calculator.isNumInputFinished = true;
-            } catch (FormatException)
-            {
-                resultBox.Text = resultBox.Text;
+                return;
             }
+            unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
+            calculator.isPlus = true;
+            calculator.isNumInputFinished = true;
+            
         }
 
         private void minusClick(object sender, RoutedEventArgs e)
         {
-            try
+            if (!checkIfNumberOrNot())
             {
-                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
-                calculator.isMinus = true;
-                calculator.isNumInputFinished = true;
-            } catch (FormatException)
-            {
-                resultBox.Text = resultBox.Text;
+                return;
             }
+            unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
+            calculator.isMinus = true;
+            calculator.isNumInputFinished = true;
+            
         }
 
         private void multiplyClick(object sender, RoutedEventArgs e)
         {
-            try
+            if (!checkIfNumberOrNot())
             {
-                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
-                calculator.isMult = true;
-                calculator.isNumInputFinished = true;
-            } catch (FormatException)
-            {
-                resultBox.Text = resultBox.Text;
+                return;
             }
+            unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
+            calculator.isMult = true;
+            calculator.isNumInputFinished = true;
             
         }
 
         private void divideClick(object sender, RoutedEventArgs e)
         {
-            try
+            if (!checkIfNumberOrNot())
             {
-                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
-                calculator.isDiv = true;
-                calculator.isNumInputFinished = true;
+                return;
             }
-            catch (FormatException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
+            calculator.isDiv = true;
+            calculator.isNumInputFinished = true;
             
         }
 
         private void exponentClick(object sender, RoutedEventArgs e)
         {
-            try
+            if (!checkIfNumberOrNot())
             {
-                unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
-                calculator.isExp = true;
-                calculator.isNumInputFinished = true;
+                return;
             }
-            catch (FormatException)
-            {
-                resultBox.Text = resultBox.Text;
-            }
+            unsetCurrentOperator(); //Checks if user selected a different operator before and unsets it
+            calculator.isExp = true;
+            calculator.isNumInputFinished = true;
+            
             
         }
 
@@ -276,14 +273,12 @@ namespace Calculator
                 }
             } catch (DivideByZeroException)
             {
+                clearForExceptions();
                 resultBox.Text = "Cannot Divide by Zero";
-                unsetAll();
-                unsetCurrentOperator();
             } catch (FormatException)
             {
+                clearForExceptions();
                 resultBox.Text = resultBox.Text;
-                unsetAll();
-                unsetCurrentOperator();
             }
         }
 
@@ -433,7 +428,6 @@ namespace Calculator
             }
             else
             {
-                calculator.secondNumberSet = true;
                 calculator.secondNumber = double.Parse(resultBox.Text);
             }
         }
@@ -458,6 +452,16 @@ namespace Calculator
             calculator.firstNumberSet = false;
             calculator.isThereAnswer = false;
             calculator.isNumInputFinished = false;
+        }
+
+        public void clearForExceptions()
+        {
+            calculator.firstNumber = 0.0;
+            calculator.firstNumberSet = false;
+            calculator.secondNumber = 0.0;
+            calculator.isThereAnswer = false;
+            calculator.isNumInputFinished = false;
+            unsetCurrentOperator();
         }
     }
 }

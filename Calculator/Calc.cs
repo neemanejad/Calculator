@@ -5,7 +5,7 @@ namespace Calculator
     public class Calc
     {
         public double firstNumber, secondNumber, answer;
-        public bool firstNumberSet, secondNumberSet, isNumInputFinished, isThereAnswer;
+        public bool firstNumberSet, isNumInputFinished, isThereAnswer;
         public bool isPlus, isMinus, isMult, isDiv, isExp;
 
         public Calc()
@@ -14,7 +14,6 @@ namespace Calculator
             secondNumber = 0.0;
             answer = 0.0;
             firstNumberSet = false;
-            secondNumberSet = false;
             isNumInputFinished = false;
             isThereAnswer = false;
             isPlus = false;
