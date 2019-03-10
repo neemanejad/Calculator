@@ -4,18 +4,18 @@ namespace Calculator
 {
     public class Calc
     {
-        public long firstNumber, secondNumber, answer;
-        public bool firstNumberSet, secondNumberSet, isThereFullNumber, isThereAnswer;
+        public double firstNumber, secondNumber, answer;
+        public bool firstNumberSet, secondNumberSet, isThereFullNumberDisplayed, isThereAnswer;
         public bool isPlus, isMinus, isMult, isDiv, isExp;
 
         public Calc()
         {
-            firstNumber = 0;
-            secondNumber = 0;
-            answer = 0;
+            firstNumber = 0.0;
+            secondNumber = 0.0;
+            answer = 0.0;
             firstNumberSet = false;
             secondNumberSet = false;
-            isThereFullNumber = false;
+            isThereFullNumberDisplayed = false;
             isThereAnswer = false;
             isPlus = false;
             isMinus = false;
@@ -34,29 +34,29 @@ namespace Calculator
             return false;
         }
 
-        public long Add()
+        public double Add()
         {
             return firstNumber + secondNumber;
         }
 
-        public long Subtract()
+        public double Subtract()
         {
             return firstNumber - secondNumber;
         }
 
-        public long Multiply()
+        public double Multiply()
         {
             return firstNumber * secondNumber;
         }
 
-        public long Divide()
+        public double Divide()
         {
             return firstNumber / secondNumber;
         }
 
-        public long Exponentiate()
+        public double Exponentiate()
         {
-            long origNum = firstNumber;
+            double origNum = firstNumber;
             for (int i = 1; i < secondNumber; i++)
             {
                 firstNumber *= origNum;
@@ -64,12 +64,5 @@ namespace Calculator
 
             return firstNumber;
         }
-
-        public void Clear()
-        {
-            firstNumber = 0;
-            secondNumber = 0;
-        }
-
     }
 }
