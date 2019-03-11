@@ -9,4 +9,4 @@
 
 
 ### AppVeyor Status Badge:
-<img src="https://ci.appveyor.com/api/projects/status/sharkcooper/Calculatorsvg=true" alt="Project Badge" width="300">
+<img src="https://ci.appveyor.com/api/projects/status/9jo5fsxhn7lus9td?svg=true" alt="Project Badge" width="300">
