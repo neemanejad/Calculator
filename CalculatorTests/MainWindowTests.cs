@@ -11,7 +11,7 @@ namespace Calculator.Tests
     [TestClass]
     public class MainWindowTests
     {
-        [TestMethod]
+        [TestMethod, TestCategory("MattADD")]
         public void CheckAddition()
         {
             Calc TestCalc = new Calc();
@@ -21,7 +21,7 @@ namespace Calculator.Tests
             Assert.AreEqual(13, TestCalc.answer, "Normal addition failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattADD")]
         public void CheckAdditionWithDecimals()
         {
             Calc TestCalc = new Calc();
@@ -31,7 +31,7 @@ namespace Calculator.Tests
             Assert.AreEqual(10.9808, TestCalc.answer, "Addition with decimals failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattSUBTRACT")]
         public void CheckSubtraction()
         {
             Calc TestCalc = new Calc();
@@ -41,7 +41,7 @@ namespace Calculator.Tests
             Assert.AreEqual(15, TestCalc.answer, "Normal subtraction failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattSUBTRACT")]
         public void CheckSubtractionWithDecimals()
         {
             Calc TestCalc = new Calc();
@@ -51,7 +51,7 @@ namespace Calculator.Tests
             Assert.AreEqual(6, TestCalc.answer, "Subtraction with decimals failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattMULTIPLY")]
         public void CheckMultiplication()
         {
             Calc TestCalc = new Calc();
@@ -61,7 +61,7 @@ namespace Calculator.Tests
             Assert.AreEqual(150, TestCalc.answer, "Normal multiplication failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattMULTIPLY")]
         public void CheckMultiplicationWithDecimals()
         {
             Calc TestCalc = new Calc();
@@ -71,7 +71,7 @@ namespace Calculator.Tests
             Assert.AreEqual(11.3125, TestCalc.answer, "Multiplication with decimals failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattDIVIDE")]
         public void CheckDivision()
         {
             Calc TestCalc = new Calc();
@@ -81,7 +81,7 @@ namespace Calculator.Tests
             Assert.AreEqual(6, TestCalc.answer, "Normal division failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattDIVIDE")]
         public void CheckDivisionWithDecimals()
         {
             Calc TestCalc = new Calc();
@@ -91,7 +91,7 @@ namespace Calculator.Tests
             Assert.AreEqual(5, TestCalc.answer, "Division with decimals failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattEXPONENTIATE")]
         public void CheckExponentiation()
         {
             Calc TestCalc = new Calc();
@@ -101,7 +101,7 @@ namespace Calculator.Tests
             Assert.AreEqual(16, TestCalc.answer, "Normal exponentiation failed.");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("MattEXPONENTIATE")]
         public void CheckExponentiationWithDecimals()
         {
             Calc TestCalc = new Calc();
