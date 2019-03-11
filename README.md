@@ -7,3 +7,7 @@ Calculator features:
 
 Known Issues:
 - Can't combine mouse and keyboard inputs: https://github.com/sharkcooper/Calculator/issues/1#issue-419233758
+
+
+AppVeyor Status Badge:
+https://ci.appveyor.com/api/projects/status/9jo5fsxhn7lus9td/branch/master
