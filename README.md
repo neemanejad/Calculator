@@ -10,4 +10,4 @@ Known Issues:
 
 
 AppVeyor Status Badge:
-https://ci.appveyor.com/api/projects/status/9jo5fsxhn7lus9td/branch/master
+https://ci.appveyor.com/api/projects/status/sharkcooper/Calculator
