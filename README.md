@@ -4,9 +4,8 @@
 - Performs addition, subtraction, multiplication, division, and exponentiation
 - Handles both integer and decimal values
 
-### Known Issues
-- Can't combine mouse and keyboard inputs: https://github.com/sharkcooper/Calculator/issues/1#issue-419233758
+### [Known Issues](https://github.com/sharkcooper/Calculator/issues)
 
+### Build Status:
+[![Build status](https://ci.appveyor.com/api/projects/status/9jo5fsxhn7lus9td/branch/master?svg=true)](https://ci.appveyor.com/project/sharkcooper/calculator/branch/master)
 
-### AppVeyor Status Badge:
-<img src="https://ci.appveyor.com/api/projects/status/9jo5fsxhn7lus9td?svg=true" alt="Project Badge" width="300">
